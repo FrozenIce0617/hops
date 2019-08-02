@@ -129,6 +129,16 @@ class GraphQLMixin extends Mixin {
       ];
     }
   }
+
+  enhanceTestElement([element, config]) {
+    const React = require('react');
+    const { MockedProvider } = require('react-apollo/test-utils');
+    const { mockedProviderProps = null } = config;
+    return [
+      React.createElement(MockedProvider, mockedProviderProps, element),
+      config,
+    ];
+  }
 }
 
 module.exports = GraphQLMixin;
